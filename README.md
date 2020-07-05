@@ -248,3 +248,5 @@ Shortcuts using `<leader>` instead of special characters:
 Just do following:
 * Remove `~/.vim`
 * Remove any lines that reference `.vim` in your `~/.vimrc`
+sh ~/myvim/install.sh
+
