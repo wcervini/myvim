@@ -48,6 +48,8 @@ Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/tComment'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+Plugin 'mattn/emmet.vim'
+Plugin "vim-python/python-syntax"
 "Plugin 'ervandew/supertab'
 "Plugin 'prettier/vim-prettier'
 call vundle#end()
@@ -264,6 +266,20 @@ set wrap "Wrap lines
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
+""""""""""""""""""""""""""""""""
+"     Cierre de parentesis     "
+""""""""""""""""""""""""""""""""
+inoremap ( ()<left>
+inoremap { {}<left>
+inoremap " ""<left>
+inoremap [ []<left>
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""" Remaping """"""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <leader>w :w<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
@@ -286,9 +302,8 @@ map <leader>bd :Bclose<cr>:tabclose<cr>gT
 
 " Close all the buffers
 map <leader>ba :bufdo bd<cr>
-
-map <leader>l :bnext<cr>
-map <leader>h :bprevious<cr>
+map <leader>l :bnext<CR>
+map <leader>h :bprevious<CR>
 
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
@@ -343,12 +358,6 @@ nmap <M-k> mz:m-2<cr>`z
 vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
 vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
-if has("mac") || has("macunix")
-  nmap <D-j> <M-j>
-  nmap <D-k> <M-k>
-  vmap <D-j> <M-j>
-  vmap <D-k> <M-k>
-endif
 
 " Delete trailing white space on save, useful for some filetypes ;)
 fun! CleanExtraSpaces()
@@ -375,6 +384,13 @@ map <leader>sn ]s
 map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
+
+let g:kite_auto_complete=1
+let g:kite_snippets=1
+let g:kite_tab_complete=1
+set statusline=%<%f\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
+set laststatus=2  " always display the status line
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
